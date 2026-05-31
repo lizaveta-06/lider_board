@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 import waveImg from '../../Vector.png'; 
@@ -7,21 +8,34 @@ import circlesImg from '../../elips.png';
 function Login() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  console.log('Компонент Login загружен');
+
+  const handleLogin = () => {
+    console.log('Кнопка нажата! Логин:', login, 'Пароль:', password);
+    if (login && password) {
+      console.log('Условие выполнено, сохраняем isAuth');
+      localStorage.setItem('isAuth', 'true');
+      console.log('isAuth сохранен:', localStorage.getItem('isAuth'));
+      console.log('Пытаемся перейти на /rating');
+      navigate('/rating');
+    } else {
+      console.log('Логин или пароль пустые');
+      alert('Введите логин и пароль');
+    }
+  };
 
   return (
     <div className="login-container">
-      //эллипс
       <div className="circles-image-wrapper">
         <img src={circlesImg} alt="circles decoration" className="circles-bg" />
       </div>
-      //волна
       <div className="wave-wrapper">
         <img src={waveImg} alt="wave decoration" className="wave-bg" />
       </div>
-      //Авторизация
       <div className="auth-form">
         <h2 className="auth-title">АВТОРИЗАЦИЯ</h2>
-        //поле логин
         <div className="input-field">
           <div className="icon-box">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -36,7 +50,6 @@ function Login() {
             onChange={(e) => setLogin(e.target.value)}
           />
         </div>
-        //поле пароль
         <div className="input-field">
           <div className="icon-box">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
@@ -51,8 +64,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        //кнопка войти
-        <button className="submit-btn">ВОЙТИ</button>
+        <button className="submit-btn" onClick={handleLogin}>ВОЙТИ</button>
       </div>
 
     </div>

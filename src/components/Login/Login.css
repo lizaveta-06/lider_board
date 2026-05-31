@@ -136,3 +136,11 @@
 .submit-btn:hover {
   background-color: #f2f2f2;
 }
+
+.input-field input {
+  text-transform: none;
+}
+
+.input-field input::placeholder {
+  text-transform: uppercase;
+}
