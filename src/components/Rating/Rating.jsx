@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Rating.css';
 
-// Импорты фоновых схем и логотипа
 import leftSchematic from '../../ComponentL.png';
 import rightSchematic from '../../ComponentR.png';
 import logo from '../../logo.png';
-
-// Импорты иконок
 import homeIcon from '../../home.png';  
 import cabinetIcon from '../../lk.png'; 
 import personalIcon from '../../lr.png'; 
@@ -17,8 +14,7 @@ import mentorIcon from '../../nr.png';
 function Rating() {
   const navigate = useNavigate();
   const [selectedSemester, setSelectedSemester] = useState('1');
-
-  // Определение текущей даты
+  
   const currentDate = new Date();
   const months = [
     'январь', 'февраль', 'март', 'апрель', 'май', 'июнь',
